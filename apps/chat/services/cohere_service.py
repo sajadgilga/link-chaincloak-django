@@ -26,7 +26,7 @@ class CohereService(LLMService):
         }
         result = httpx.post(url, headers=headers, json=data)
         if result.status_code == 200:
-            return result.text
+            return result.json()["text"]
         raise ServiceCallError()
 
     def change_message_model(self, message):
